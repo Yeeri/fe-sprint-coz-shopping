@@ -1,33 +1,25 @@
-import React, { useState } from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import productslist from "../img/producticon.png";
+import bookmark from "../img/bookmarkicon.png";
 
-function NavModal() {
-  const [bookmarkedProducts, setBookmarkedProducts] = useState([]);
 
-  // 북마크한 상품들을 조회하는 함수
-  const fetchBookmarkedProducts = () => {
-    // 상품 조회 로직 구현
-    // bookmarkedProducts 상태 업데이트
-  };
-
-  // 초기 마운트 시 북마크한 상품들을 조회합니다.
-  useEffect(() => {
-    fetchBookmarkedProducts();
-  }, []);
+const NavModal = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="NavModal">
-      <h3>북마크한 상품들</h3>
-      {bookmarkedProducts.length > 0 ? (
-        <ul>
-          {bookmarkedProducts.map((product) => (
-            <li key={product.id}>{product.name}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>북마크한 상품이 없습니다.</p>
-      )}
+      <div className="hello">이예리님, 안녕하세요!</div>
+      <div onClick={() => {navigate("/products/list");}} className="NavModal-list">
+        <img className="productslist" src={productslist} alt="productslist" />
+        상품리스트 페이지
+      </div>
+      <div onClick={() => {navigate("/bookmark");}} className="NavModal-list">
+        <img className="bookmark" src={bookmark} alt="bookmark" />
+        북마크 페이지
+      </div>
     </div>
   );
-}
+};
 
 export default NavModal;
